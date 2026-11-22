@@ -6,7 +6,8 @@ class Option(StrEnum):
 	DEPOSIT = "1"
 	WITHDRAW = "2"
 	BALANCE = "3"
-	EXIT = "4"
+	HISTORY = "4"
+	EXIT = "5"
 
 def clear_display():
 	"""Clears terminal display"""
@@ -14,6 +15,8 @@ def clear_display():
 
 def username_login():
 	"""Takes input for username login"""
+	clear_display()
+
 	print("Welcome to your ATM")
 	username = input("Please enter your username: ").lower()
 
@@ -27,35 +30,44 @@ def pin_login(username):
 	attempts = 0
 	max_attempts = 3
 
+	clear_display()
+
+	print(f"Good day {username}")
+
 	while attempts < max_attempts:
-		print(f"\nPlease enter your pin number (Attempt {attempts + 1}/{max_attempts})")
+		print(f"Please enter your pin number (Attempt {attempts + 1}/{max_attempts})")
 		pin = input(": ")
 
-		if verify.verify.pin(username, pin): # validates pin input belongs to the registered username. 
+		if verify.verify_pin(username, pin): # validates pin input belongs to the registered username. 
+
+			clear_display()
+
 			print("PIN verified successfully!")
 			return True
 		else: # if pin input is typed wrong or is incorrect.
 			attempts += 1
-			remaining = max_attempts + attempts
+			remaining = max_attempts - attempts
 
 			if remaining > 0:
-				print(f"Incorrect PIN. You have {remaining} attempt(s) left.")
+				print(f"\nIncorrect PIN. You have {remaining} attempt(s) left.")
 
-	print("\nMaximum attempts reached. Session terminated, please contact bank security.")
+	clear_display()
+
+	print("\nMaximum attempts reached. Session terminated, please contact bank security.\n")
 	return False
 
 def transactions_screen(username):
 	"""Displays operation options after username and pin has been validated"""
-	clear_display()
-	print(f"User: {username.title()}\n")
+	print(f"Account holder: {username.title()}\n")
 	print(
-		f"{Option.DEPOSIT}1- Deposit\n"
-		f"{Option.WITHDRAW}2- Withdraw\n"
-		f"{Option.BALANCE}3- Check balance\n"
-		f"{Option.EXIT}4- Exit"
+		f"{Option.DEPOSIT}- Deposit\n"
+		f"{Option.WITHDRAW}- Withdraw\n"
+		f"{Option.BALANCE}- Check balance\n"
+		f"{Option.HISTORY}- Check transaction history\n"
+		f"{Option.EXIT}- Exit"
 	)
 
-	return input(": ")
+	return input("Select option: ")
 
 
 	
