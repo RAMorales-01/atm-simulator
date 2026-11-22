@@ -1,4 +1,4 @@
-# active users to verified
+# simulates a basic database for users with an account with the bank.
 active_users = {
 	'alex': {
 		'pin': '5683',
@@ -22,12 +22,3 @@ active_users = {
 		}
 }
 
-# For testing purpose only.
-if __name__ == "__main__":
-	for outer_key, inner_dict in active_users.items():
-		print("========================")
-		print(f"{outer_key.title()}: \n")
-
-		for inner_key, value in inner_dict.items():
-			print(f"{inner_key.title()}: {value}")
-		print("\n")

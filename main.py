@@ -1,13 +1,16 @@
-import user_verification as verify
+import frontend as transaction
 
 def main():
-	print("Welcome to your ATM")
-	username = input("Please type your username: ")
+	"""Begins the simulation for an ATM basic transactions"""
+	current_user = transaction.username_login()
 
-	if verify.verify_username(username):
-		print(f"\nWelcome {username}!")
+	if current_user:
+		# Once the username has been validated successfully, next step is to validate the pin linked to the username.
+		if transaction.pin_login(current_user):
+			print(f"Welcome {current_user.title()}! now loading main menu...")
+			#TODO: Transaction options.
 	else:
-		print("\nSorry it seems that your username is not correct, please try again.")
+		print("Typed username is not registered in our database. Please contact the bank services to open an account.")
 
 if __name__ == "__main__":
 	main()
