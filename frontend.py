@@ -1,4 +1,16 @@
+import os
+from enum import StrEnum
 import user_verification as verify
+
+class Option(StrEnum):
+	DEPOSIT = "1"
+	WITHDRAW = "2"
+	BALANCE = "3"
+	EXIT = "4"
+
+def clear_display():
+	"""Clears terminal display"""
+	os.system('cls' if os.name == 'nt' else 'clear')
 
 def username_login():
 	"""Takes input for username login"""
@@ -31,3 +43,19 @@ def pin_login(username):
 
 	print("\nMaximum attempts reached. Session terminated, please contact bank security.")
 	return False
+
+def transactions_screen(username):
+	"""Displays operation options after username and pin has been validated"""
+	clear_display()
+	print(f"User: {username.title()}\n")
+	print(
+		f"{Option.DEPOSIT}1- Deposit\n"
+		f"{Option.WITHDRAW}2- Withdraw\n"
+		f"{Option.BALANCE}3- Check balance\n"
+		f"{Option.EXIT}4- Exit"
+	)
+
+	return input(": ")
+
+
+	
