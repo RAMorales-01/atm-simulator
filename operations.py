@@ -11,7 +11,12 @@ def select_transaction(selected_option, username):
 
 def deposit(username):
     """Let the user add money to his/her balance"""
-    pass
+    print("\nPlease type the amount you wish to deposit")
+    amount = int(input(": "))
+
+    current_balance = users.active_users[username]['balance']
+    new_balance = current_balance + amount
+    return new_balance
 
 def withdraw(username):
     """Let the user withdraw money form his/her balance"""
@@ -24,10 +29,6 @@ def check_balance(username):
 
 def check_transaction_history(username):
     """Shows to the user all the recent operations"""
-    pass
-
-def operations(current_balance):
-    """Adds or Subtracts, Shows current balance and history of all recent transactions"""
     pass
 
 actions = {
