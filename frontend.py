@@ -1,6 +1,7 @@
 import os
 from enum import StrEnum
 import user_verification as verify
+import operations as operation
 
 class Option(StrEnum):
 	DEPOSIT = "1"
@@ -58,16 +59,17 @@ def pin_login(username):
 
 def transactions_screen(username):
 	"""Displays operation options after username and pin has been validated"""
-	print(f"Account holder: {username.title()}\n")
-	print(
-		f"{Option.DEPOSIT}- Deposit\n"
-		f"{Option.WITHDRAW}- Withdraw\n"
-		f"{Option.BALANCE}- Check balance\n"
-		f"{Option.HISTORY}- Check transaction history\n"
-		f"{Option.EXIT}- Exit"
-	)
-
-	return input("Select option: ")
-
-
+	while True:
+		print(f"Account holder: {username.title()}\n")
+		print(
+			f"{Option.DEPOSIT}- Deposit\n"
+			f"{Option.WITHDRAW}- Withdraw\n"
+			f"{Option.BALANCE}- Check balance\n"
+			f"{Option.HISTORY}- Check transaction history\n"
+			f"{Option.EXIT}- Exit"
+		)
+		
+		choice = input("Select option: ")
+		requested_op = operation.select_transaction(choice, username)
+		print(f"\n[ {requested_op} ]\n")
 	
