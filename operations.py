@@ -20,7 +20,16 @@ def deposit(username):
 
 def withdraw(username):
     """Let the user withdraw money form his/her balance"""
-    pass
+    print("\nPlease type the amount you wish to withdraw")
+    amount = int(input(": "))
+
+    current_balance = users.active_users[username]['balance']
+
+    if amount > current_balance:
+        return "!Insufficient funds.\n"
+    else:
+        users.active_users[username]['balance'] -= amount
+        return f"Withdraw was successful. New Balance: {users.active_users[username]['balance']}"    
 
 def check_balance(username):
     """Let user see his/her current balance"""
