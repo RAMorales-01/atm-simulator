@@ -75,7 +75,7 @@ def transactions_screen(username):
 			break
 		else:
 			requested_op = operation.select_transaction(choice, username)
-			print(f"\n[ {requested_op} ]\n")
+			print(f"\n-- {requested_op} -\n")
 
 	clear_display()
 	print("\nThank you for using your ATM, Have a nice day!\n")

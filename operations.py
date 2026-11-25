@@ -15,9 +15,10 @@ def deposit(username):
     amount = int(input(": "))
 
     current_balance = users.active_users[username]['balance']
-    new_balance = current_balance + amount
+
+    users.active_users[username]['balance'] += amount
     users.active_users[username]['history'].append("deposit")
-    return new_balance
+    return f"Deposit was successful. New Balance: {users.active_users[username]['balance']}"
 
 def withdraw(username):
     """Let the user withdraw money form his/her balance"""
@@ -35,8 +36,7 @@ def withdraw(username):
 
 def check_balance(username):
     """Let user see his/her current balance"""
-    current_balance = users.active_users[username]['balance']
-    return current_balance
+    return f"Current balance: {users.active_users[username]['balance']}"
 
 def check_transaction_history(username):
     """Shows to the user all the recent operations"""
