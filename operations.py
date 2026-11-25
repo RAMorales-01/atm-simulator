@@ -7,7 +7,7 @@ def select_transaction(selected_option, username):
     if action:
         return action(username)
     else:
-        return "invalid option"
+        return "invalid option."
 
 def deposit(username):
     """Let the user add money to his/her balance"""
@@ -16,6 +16,7 @@ def deposit(username):
 
     current_balance = users.active_users[username]['balance']
     new_balance = current_balance + amount
+    users.active_users[username]['history'].append("deposit")
     return new_balance
 
 def withdraw(username):
@@ -29,6 +30,7 @@ def withdraw(username):
         return "!Insufficient funds.\n"
     else:
         users.active_users[username]['balance'] -= amount
+        users.active_users[username]['history'].append("withdraw")
         return f"Withdraw was successful. New Balance: {users.active_users[username]['balance']}"    
 
 def check_balance(username):
@@ -38,7 +40,7 @@ def check_balance(username):
 
 def check_transaction_history(username):
     """Shows to the user all the recent operations"""
-    pass
+    return users.active_users.get(username, {}).get('history', [])
 
 actions = {
     "1": deposit,

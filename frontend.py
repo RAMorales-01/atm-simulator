@@ -11,7 +11,7 @@ class Option(StrEnum):
 	EXIT = "5"
 
 def clear_display():
-	"""Clears terminal display"""
+	"""Clears terminal"""
 	os.system('cls' if os.name == 'nt' else 'clear')
 
 def username_login():
@@ -70,6 +70,13 @@ def transactions_screen(username):
 		)
 		
 		choice = input("Select option: ")
-		requested_op = operation.select_transaction(choice, username)
-		print(f"\n[ {requested_op} ]\n")
+
+		if choice == Option.EXIT:
+			break
+		else:
+			requested_op = operation.select_transaction(choice, username)
+			print(f"\n[ {requested_op} ]\n")
+
+	clear_display()
+	print("\nThank you for using your ATM, Have a nice day!\n")
 	
