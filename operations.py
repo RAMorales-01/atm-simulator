@@ -11,7 +11,7 @@ def select_transaction(selected_option, username):
 
 def deposit(username):
     """Let the user add money to his/her balance"""
-    print("\nPlease type the amount you wish to deposit")
+    print("Please type the amount you wish to deposit")
     amount = int(input(": "))
 
     current_balance = users.active_users[username]['balance']
@@ -22,7 +22,7 @@ def deposit(username):
 
 def withdraw(username):
     """Let the user withdraw money form his/her balance"""
-    print("\nPlease type the amount you wish to withdraw")
+    print("Please type the amount you wish to withdraw")
     amount = int(input(": "))
 
     current_balance = users.active_users[username]['balance']
@@ -40,7 +40,7 @@ def check_balance(username):
 
 def check_transaction_history(username):
     """Shows to the user all the recent operations"""
-    return users.active_users.get(username, {}).get('history', [])
+    return f"Recent Transacctions: {users.active_users.get(username, {}).get('history', [])}"
 
 actions = {
     "1": deposit,

@@ -60,6 +60,7 @@ def pin_login(username):
 def transactions_screen(username):
 	"""Displays operation options after username and pin has been validated"""
 	while True:
+		clear_display()
 		print(f"Account holder: {username.title()}\n")
 		print(
 			f"{Option.DEPOSIT}- Deposit\n"
@@ -74,9 +75,11 @@ def transactions_screen(username):
 		if choice == Option.EXIT:
 			break
 		else:
+			clear_display()
 			requested_op = operation.select_transaction(choice, username)
-			print(f"\n-- {requested_op} -\n")
+			print(f"-- {requested_op} -\n")
+			input("Press ENTER to continue...")
 
 	clear_display()
-	print("\nThank you for using your ATM, Have a nice day!\n")
+	print("Thank you for using your ATM, Have a nice day!\n")
 	
