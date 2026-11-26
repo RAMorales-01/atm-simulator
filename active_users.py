@@ -1,4 +1,4 @@
-# simulates a basic database for users with an account with the bank.
+# simulates a basic database for users with an active account.
 active_users = {
 	'alex': {
 		'pin': '2465',

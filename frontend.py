@@ -17,35 +17,32 @@ def clear_display():
 def username_login():
 	"""Takes input for username login"""
 	clear_display()
-
-	print("Welcome to your ATM")
+	print("Welcome to your ATM simulation")
 	username = input("Please enter your username: ").lower()
 
-	if verify.verify_username(username): #if username is in the database, the same username is returned.
+	if verify.verify_username(username): 
 		return username
 	else:
 		return None
 
 def pin_login(username):
-	"""Takes input for PIN number associated to verified username, after 3 failed attempts program is terminated."""
+	"""Takes input for PIN number associated to verified username."""
+	# After 3 failed attempts to enter the correct pin, the program ends.
 	attempts = 0
-	max_attempts = 3
+	max_attempts = 3 
 
 	clear_display()
-
 	print(f"Good day {username}")
 
 	while attempts < max_attempts:
 		print(f"Please enter your pin number (Attempt {attempts + 1}/{max_attempts})")
 		pin = input(": ")
 
-		if verify.verify_pin(username, pin): # validates pin input belongs to the registered username. 
-
+		if verify.verify_pin(username, pin): # validates pin input associated to username. 
 			clear_display()
-
 			print("PIN verified successfully!")
 			return True
-		else: # if pin input is typed wrong or is incorrect.
+		else: 
 			attempts += 1
 			remaining = max_attempts - attempts
 
@@ -54,7 +51,7 @@ def pin_login(username):
 
 	clear_display()
 
-	print("\nMaximum attempts reached. Session terminated, please contact bank security.\n")
+	print("Maximum attempts reached. account blocked, please contact bank customer services.\n")
 	return False
 
 def transactions_screen(username):

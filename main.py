@@ -3,6 +3,7 @@ import frontend as transaction
 
 def main():
 	"""Begins the simulation for an ATM basic transactions"""
+	# First search for the username exists in the dictionary
 	current_user = transaction.username_login()
 
 	if current_user:
@@ -12,7 +13,7 @@ def main():
 			time.sleep(3)
 			transaction.transactions_screen(current_user)
 	else:
-		print("\nTyped username is not registered in our database. Please contact the bank services to open an account.\n")
+		print("\nTyped username is not registered in our database.\n")
 
 if __name__ == "__main__":
 	main()

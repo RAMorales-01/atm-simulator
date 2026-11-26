@@ -1,7 +1,9 @@
 import active_users as users
 
 def select_transaction(selected_option, username):
-    """Main connection for the operations"""
+    """Main entry for operations"""
+    # Verify if user input is a valid option.
+    # if it is valid, then linked func is called.
     action = actions.get(selected_option)
     
     if action:
