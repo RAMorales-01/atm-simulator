@@ -1,4 +1,5 @@
 import os
+import time
 from enum import StrEnum
 import user_verification as verify
 import operations as operation
@@ -31,10 +32,8 @@ def pin_login(username):
 	attempts = 0
 	max_attempts = 3 
 
-	clear_display()
-	print(f"Good day {username}")
-
 	while attempts < max_attempts:
+		clear_display()
 		print(f"Please enter your pin number (Attempt {attempts + 1}/{max_attempts})")
 		pin = input(": ")
 
@@ -48,6 +47,7 @@ def pin_login(username):
 
 			if remaining > 0:
 				print(f"\nIncorrect PIN. You have {remaining} attempt(s) left.")
+				time.sleep(3)
 
 	clear_display()
 
